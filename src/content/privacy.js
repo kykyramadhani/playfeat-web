@@ -85,7 +85,7 @@ export const privacy = {
       { p: 'As it stands, the app is intentionally offline and self-contained.' },
       { h: '11. Contact' },
       { p: 'If you have questions about this privacy policy or how PlayFeat handles your data, contact:' },
-      { p: '[playfeatdevs@gmail.com]' },
+      { mail: 'playfeatdevs@gmail.com' },
     ],
   },
   id: {
@@ -172,7 +172,7 @@ export const privacy = {
       { p: 'Untuk saat ini, aplikasi sengaja dibuat offline dan mandiri.' },
       { h: '11. Kontak' },
       { p: 'Jika kamu memiliki pertanyaan tentang kebijakan privasi ini atau bagaimana PlayFeat menangani datamu, hubungi:' },
-      { p: '[playfeatdevs@gmail.com]' },
+      { mail: 'playfeatdevs@gmail.com' },
     ],
   },
 }

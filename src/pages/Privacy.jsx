@@ -4,6 +4,12 @@ import { useLang } from '../i18n.jsx'
 function Block({ b }) {
   if (b.h) return <h2 className="mt-4 text-base font-bold">{b.h}</h2>
   if (b.b) return <p className="mt-2 font-bold">{b.b}</p>
+  if (b.mail)
+    return (
+      <p className="mt-2 font-bold">
+        <a href={`mailto:${b.mail}`} className="underline">{b.mail}</a>
+      </p>
+    )
   if (b.ul)
     return (
       <ul className="mt-2 list-disc pl-5">
