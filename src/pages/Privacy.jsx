@@ -45,9 +45,9 @@ function Block({ b }) {
 export default function Privacy() {
   const { title, dates, blocks } = privacy[useLang().lang]
   return (
-    <main className="px-4 pb-16 pt-[48px]">
-      <article className="mx-auto w-full max-w-[650px] rounded-2xl border border-tertiary bg-[rgba(243,240,235,0.38)] px-8 py-6">
-        <h1 className="px-2.5 pt-2.5 text-center text-[32px] font-bold text-black">{title}</h1>
+    <main className="px-4 pb-16 pt-6 sm:pt-[48px]">
+      <article className="mx-auto w-full max-w-[650px] rounded-2xl border border-tertiary bg-[rgba(243,240,235,0.38)] px-4 py-6 sm:px-8">
+        <h1 className="px-2.5 pt-2.5 text-center text-[28px] sm:text-[32px] font-bold text-black">{title}</h1>
         <p className="px-2.5 pb-2.5 text-center text-sm text-black">{dates.join(' · ')}</p>
         <div className="p-2.5 text-sm leading-6 text-black">
           {blocks.map((b, i) => (

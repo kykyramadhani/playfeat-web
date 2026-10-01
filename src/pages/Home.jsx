@@ -15,17 +15,17 @@ export default function Home() {
       <img
         alt="PlayFeat mascot waving"
         src={mascot}
-        className="pointer-events-none absolute bottom-0 right-0 hidden aspect-square w-[563px] max-w-[45%] object-cover md:block"
+        className="pointer-events-none absolute bottom-0 right-0 aspect-square w-[563px] max-w-[65%] object-cover md:max-w-[45%]"
       />
-      <section className="relative mx-auto max-w-[1440px] px-6 pb-40 pt-20 lg:pl-[127px]">
-        <h1 className="text-[40px] font-bold leading-normal text-tertiary lg:text-[64px]">
+      <section className="relative mx-auto max-w-[1440px] px-6 pb-[70vw] pt-12 md:pb-40 md:pt-20 lg:pl-[127px]">
+        <h1 className="text-[34px] font-bold sm:text-[40px] leading-normal text-tertiary lg:text-[64px]">
           {t.heroTitle[0]} <br />
           {t.heroTitle[1]}
         </h1>
-        <p className="mt-10 max-w-[741px] text-2xl text-black lg:text-[32px]">
+        <p className="mt-6 max-w-[741px] text-xl sm:text-2xl md:mt-10 text-black lg:text-[32px]">
           {t.heroText}
         </p>
-        <div className="mt-12">
+        <div className="mt-8 md:mt-12">
           <AppStoreButton size="lg" />
         </div>
       </section>

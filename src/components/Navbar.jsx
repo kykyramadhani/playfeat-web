@@ -1,3 +1,4 @@
+import { useRef } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import logo from '../assets/logo.png'
 import { useLang } from '../i18n.jsx'
@@ -42,22 +43,61 @@ function LangSwitch() {
 
 export default function Navbar() {
   const { t } = useLang()
+  const drawer = useRef(null)
+  const navLinks = (onClick) =>
+    links.map(([key, to]) => (
+      <NavLink key={to} to={to} onClick={onClick} className={({ isActive }) => `whitespace-nowrap ${isActive ? 'font-bold' : ''}`}>
+        {t.nav[key]}
+      </NavLink>
+    ))
+
   return (
     <header className="border border-gold bg-cream">
-      <div className="mx-auto flex h-[100px] max-w-[1440px] items-center justify-between px-6 lg:pl-[42px] lg:pr-[98px]">
+      <div className="mx-auto flex h-[100px] max-w-[1440px] items-center justify-between px-4 sm:px-6 lg:pl-[42px] lg:pr-[98px]">
         <Link to="/" aria-label="PlayFeat home">
           <img src={logo} alt="PlayFeat!" className="h-[100px] w-[134px] object-cover" />
         </Link>
-        <nav className="flex items-center gap-6 text-lg text-black xl:gap-[72px] xl:text-2xl">
-          {links.map(([key, to]) => (
-            <NavLink key={to} to={to} className={({ isActive }) => `hidden whitespace-nowrap md:block ${isActive ? 'font-bold' : ''}`}>
-              {t.nav[key]}
-            </NavLink>
-          ))}
+        <nav className="hidden items-center gap-6 text-lg text-black lg:flex xl:gap-[72px] xl:text-2xl">
+          {navLinks()}
           <LangSwitch />
           <AppStoreButton />
         </nav>
+        <button
+          type="button"
+          aria-label="Open menu"
+          onClick={() => drawer.current.showModal()}
+          className="cursor-pointer p-2 lg:hidden"
+        >
+          <svg viewBox="0 0 24 24" className="size-8" fill="none" stroke="black" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+            <path d="M4 7h16M4 12h16M4 17h16" />
+          </svg>
+        </button>
       </div>
+
+      {/* Native <dialog>: Esc, focus trap and backdrop for free. */}
+      <dialog
+        ref={drawer}
+        onClick={(e) => e.target === drawer.current && drawer.current.close()}
+        className="m-0 ml-auto h-full max-h-none w-72 max-w-[85vw] border-l border-gold bg-cream p-6 backdrop:bg-black/40"
+      >
+        <button
+          type="button"
+          aria-label="Close menu"
+          onClick={() => drawer.current.close()}
+          className="ml-auto block cursor-pointer p-2"
+        >
+          <svg viewBox="0 0 24 24" className="size-7" fill="none" stroke="black" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+            <path d="M6 6l12 12M18 6L6 18" />
+          </svg>
+        </button>
+        <nav className="mt-4 flex flex-col gap-6 text-2xl text-black">
+          {navLinks(() => drawer.current.close())}
+        </nav>
+        <div className="mt-10 flex flex-col items-start gap-6">
+          <LangSwitch />
+          <AppStoreButton />
+        </div>
+      </dialog>
     </header>
   )
 }
